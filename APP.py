@@ -27,15 +27,15 @@ CL = st.sidebar.number_input("特征 CL (范围: 0.90-2.30)", min_value=0.90, ma
 WT = st.sidebar.number_input("特征 WT (范围: 15.5-123.0)", min_value=15.5, max_value=123.0, value=21.0)
 TBIL = st.sidebar.number_input("特征 TBIL (范围: 2.3-53.8)", min_value=2.3, max_value=53.8, value=10.9)
 AGE = st.sidebar.number_input("特征 AGE (范围: 5-85)", min_value=5, max_value=85, value=18)
-SCR = st.sidebar.number_input("特征 SCR (范围: 23.0-168.0)", min_value=23, max_value=168, value=55.0)
+SCR = st.sidebar.number_input("特征 SCR (范围: 23-168)", min_value=23, max_value=168, value=55)
 BUN = st.sidebar.number_input("特征 BUN (范围: 0.95-12.51)", min_value=0.95, max_value=12.51, value=4.11)
-ALB = st.sidebar.number_input("特征 ALB (范围: 0.19-68.0)", min_value=0.19, max_value=68, value=39.0)
-UA = st.sidebar.number_input("特征 UA (范围: 78.0-770.0)", min_value=78, max_value=770.0, value=200.0)
-GFR = st.sidebar.number_input("特征 GFR (范围: 29.0-287.21)", min_value=29.0, max_value=287.21, value=71.4)
+ALB = st.sidebar.number_input("特征 ALB (范围: 0.19-68.00)", min_value=0.19, max_value=68, value=39.0)
+UA = st.sidebar.number_input("特征 UA (范围: 78.0-770.0)", min_value=78.0, max_value=770.0, value=200.0)
+GFR = st.sidebar.number_input("特征 GFR (范围: 29.0-287.21)", min_value=29.00, max_value=287.21, value=71.40)
 HB = st.sidebar.number_input("特征 HB (范围: 84.0-182.0)", min_value=84.0, max_value=182.0, value=130.0)
 NA = st.sidebar.number_input("特征 NA (范围: 128.0-151.4)", min_value=128.0, max_value=151.4, value=141.0)
 ALT = st.sidebar.number_input("特征 ALT (范围: 4.0-873.0)", min_value=4.0, max_value=873.0, value=10.0)
-MAST = st.sidebar.number_input("特征 MAST (范围: 0.03-98.0)", min_value=0.03, max_value=98.0, value=17.0)
+MAST = st.sidebar.number_input("特征 MAST (范围: 0.03-98.00)", min_value=0.03, max_value=98.00, value=17.00)
 
 
 # 添加预测按钮
@@ -46,7 +46,7 @@ if predict_button:
     st.header("预测结果")
     try:
         # 将输入特征转换为模型所需格式
-        input_array = np.array([dose, BMI, CL, WT, TBIL, AGE, SGR, BUN, ALB, UA, GFR, HB, NA, ALT, MAST]).reshape(1, -1)
+        input_array = np.array([dose, BMI, CL, WT, TBIL, AGE, SCR, BUN, ALB, UA, GFR, HB, NA, ALT, MAST]).reshape(1, -1)
 
         # 模型预测
         prediction = stacking_regressor.predict(input_array)[0]
