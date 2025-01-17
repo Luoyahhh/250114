@@ -21,7 +21,7 @@ st.sidebar.header("特征输入区域")
 st.sidebar.write("请输入特征值：")
 
 # 定义特征输入范围
-dose = st.sidebar.number_input("特征 dose (范围: 1.69-44.0)", min_value=1.69, max_value=44.0, value=10.0)
+DOSE = st.sidebar.number_input("特征 DOSE (范围: 150-1800)", min_value=150, max_value=1800, value=300)
 BMI = st.sidebar.number_input("特征 BMI (范围: 10.81-40.23)", min_value=10.81, max_value=40.23, value=15.34)
 CL = st.sidebar.number_input("特征 CL (范围: 0.90-2.30)", min_value=0.90, max_value=2.30, value=1.55)
 
@@ -35,7 +35,7 @@ if predict_button:
     st.header("预测结果")
     try:
         # 将输入特征转换为模型所需格式
-        input_array = np.array([dose, BMI, CL]).reshape(1, -1)
+        input_array = np.array([DOSE, BMI, CL]).reshape(1, -1)
 
         # 模型预测
         prediction = stacking_regressor.predict(input_array)[0]
